@@ -1,0 +1,124 @@
+<div *ngIf="data == true" style="box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);">
+
+<div *ngIf="currentRequest">
+<div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h4>Request Details</h4>
+        <div class="row" style="margin-top: 30px;">
+            <form class="col s12">
+                <div class="row">
+                <div class="input-field col s6">
+                    <input disabled value="{{this.ersApp.currentUser.firstName}}" id="first_name" type="text" style="color: #524f4f;">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input disabled value="{{this.ersApp.currentUser.lastName}}" id="last_name" type="text" style="color: #524f4f;">
+                    <label for="last_name">Last Name</label>
+                </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                <div class="input-field col s6">
+                    <input disabled value="{{currentTypeName}}" id="request_type" type="text" style="color: #524f4f;">
+                    <label for="request_type">Request Type</label>
+                </div>
+                <div class="input-field col s6">
+                    <input disabled value="{{currentStatusName}}" id="request_status" type="text" style="color: #524f4f;">
+                    <label for="request_status">Request Status</label>
+                </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                <div class="input-field col s6">
+                    <input disabled value="$ {{currentRequest.reimbursementRequestAmount}}" id="amount" type="text" style="color: #524f4f;">
+                    <label for="amount">Amount</label>
+                </div>
+                <div class="input-field col s6">
+                    <input disabled value="{{currentRequest.reimbursementSubmitted | amLocale:'en' | amDateFormat:'MM-DD-YYYY'}}" id="submit_date" type="text" style="color: #524f4f;">
+                    <label for="submit_date">Submit Date</label>
+                </div>
+                </div>
+            </form>
+        </div>
+        <div class="row" style="height: 80px;">
+            <form class="input-field col s12">
+                <input disabled value="{{currentDescription}}" id="description" type="text" style="color: #524f4f;">
+                <label for="description">Description</label>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Close</a>
+    </div>
+</div>
+</div>
+
+<div class="panel panel-default" style="background-color: white; height: calc(100% - 8px); border: 1px solid rgba(0,0,0,.125);">
+    <div class="panel-heading" style="height: 68px;">{{tableHeader}}
+        <a class="tooltipped" data-position="right" data-delay="20" materialize="tooltip" data-tooltip="This is a list of all reimbursement requests that are awaiting a decision" 
+            style="margin-top: -6px;
+                margin-left: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                background-color: rgba(255, 255, 255, 0);">
+            <i class="fa fa-info-circle" 
+                style="margin-top: 1px;
+                    color: #777575;
+                    font-size: 1.82rem;">
+            </i>
+        </a>
+    </div>
+<table class="table table-striped" [mfData]="pendingRequests" [mfActivePage] = "1" [mfRowsOnPage]="5">
+    <thead style="color: #565777; background-color: #e5e5f1;">
+        <tr>
+            <th style="width: 5%; padding-left: 20px;">
+                <mfDefaultSorter by="name">#</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="name">TYPE</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="email">AMOUNT</mfDefaultSorter>
+            </th>
+            <th style="width: 54%">
+                <mfDefaultSorter by="age">DESCRIPTION</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="city">SUBMIT DATE</mfDefaultSorter>
+            </th>
+            <th style="width: 11%; font-size: 18px; padding-top: 14px; padding-left: 4%;">
+                <i class="fa fa-cog" style="font-size: 1.5rem;"></i>
+            </th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr *ngFor="let p of pendingRequests | paginate: { itemsPerPage: 15, currentPage: p }; let i = index;" style="background-color: white; border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #c5bdbd; color: #5a5656;">
+                <td style="width: 5%;">{{i+1}}</td>
+                <td style="width: 10%;">{{getTypeName(p.reimbursementTypeId)}}</td>
+                <td style="width: 10%;">${{p.reimbursementRequestAmount}}</td>
+                <td style="width: 55%;">{{p.reimbursementDescription}}</td>
+                <td style="width: 10%;">{{p.reimbursementSubmitted | amLocale:'en' | amDateFormat:'MM-DD-YYYY'}}</td>
+                <td style="width: 10%; padding-top: 10px; padding-left: 3.55%;">
+                    <button type="button" class="btn btn-primary" style="padding-left: 10px; padding-right: 10px;" (click)="openModal(p)">
+                        <i class="fa fa-arrows-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <pagination-controls (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</div>
+</div>
+

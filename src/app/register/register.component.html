@@ -1,0 +1,144 @@
+
+<div style="height: calc(100vh); 
+background-color: white;
+border-style: solid;
+border-width: 1px;
+border-color: #dad8d8;
+box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);">
+  <div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <div class="col s12" style="padding: 0px;">
+      <h1 style="margin-top: 18px;
+        padding-top: 0px;
+        padding-left: 23px;
+        padding-bottom: 20px;
+        font-size: x-large;
+        color: #5d5858;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #dad8d8;
+        font-family: 'Arimo', sans-serif;">
+        Registration
+      </h1>
+    </div>
+  </div>
+
+  <div class="container" style="width: 96%; margin-top: 10px;">
+    <form>
+      <div class="row">
+        <div class="col s6">
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input required name="firstname" #firstname="ngModel" [(ngModel)]="user.firstName" style="border-bottom-style: solid; width: 100%;"
+              placeholder="First Name" type="text" class="form-control" required>
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger" style="text-align: center;">
+              <div *ngIf="firstname.errors.required">
+                First name is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input required #lastname="ngModel" name="lastname" [(ngModel)]="user.lastName" style="border-bottom-style: solid; width: 100%;"
+              placeholder="Last Name" type="text" class="form-control">
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger" style="text-align: center;">
+              <div *ngIf="lastname.errors.required">
+                Last name is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <div class="form-group">
+            <label for="name">Username</label>
+            <input required #username="ngModel" (keyup)="validateUsername()" name="username" [(ngModel)]="user.username" style="border-bottom-style: solid; width: 100%;"
+              placeholder="Username" type="text" class="form-control">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)">
+              <div *ngIf="username.errors.required" class="alert alert-danger" style="text-align: center;">
+                Username is required
+              </div>
+            </div>
+            <div *ngIf="usernameFlag" class="alert alert-danger" style="text-align: center;">
+              Username is already taken
+            </div>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="form-group">
+            <label for="name">Email</label>
+            <input required email #email="ngModel" name="email" (keyup)="validateEmail()" [(ngModel)]="user.email" style="border-bottom-style: solid; width: 100%;"
+              placeholder="Email" type="email" class="form-control">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.errors.required" class="alert alert-danger" style="text-align: center;">
+                Email is required
+              </div>
+              <div *ngIf="email.errors.email" class="alert alert-danger" style="text-align: center;">
+                Not a valid email address
+              </div>
+            </div>
+            <div *ngIf="emailFlag" class="alert alert-danger" style="text-align: center;">
+              Email address is already taken
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <div class="form-group">
+            <label for="name">Password</label>
+            <input name="password" required #password="ngModel" [(ngModel)]="user.password" style="border-bottom-style: solid; width: 100%;"
+              placeholder="Password" type="password" class="form-control" required>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              <div *ngIf="password.errors.required" style="text-align: center;">
+                Please enter your password
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="form-group">
+            <label for="name">Confirm Password</label>
+            <input name="confirm_password" required #confirmPassword="ngModel" [(ngModel)]="confirmPass" (keyup)="validatePassword()"
+              style="border-bottom-style: solid; width: 100%;" placeholder="Confirm Password" type="password" class="form-control"
+              required>
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+              <div *ngIf="confirmPassword.errors.required" style="text-align: center;">
+                Please confirm your password
+              </div>
+            </div>
+            <div *ngIf="!passwordFlag" class="alert alert-danger" style="text-align: center;">
+              Password does not match
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- <div *ngIf="!isValidUsername" class="alert alert-danger" style="margin-left: 390px; text-align: center; width: 300px;">
+    Username already taken
+  </div>
+  <div *ngIf="!isValidEmail" class="alert alert-danger" style="margin-left: 390px; text-align: center; width: 300px;">
+    Email already taken
+  </div> -->
+  <div class="row" style="
+    margin-left: 0vw;
+    margin-right: 0vw;
+    margin-bottom: 0px;
+    height: 38vh;
+    padding-top: 10px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #d2d2d2;
+    background-color: #f1f1f1;">
+    <div class="col s12">
+      <button type="submit" style="float: right; margin-left: 10px;" class="btn btn-success" (click)="register()">Submit</button>
+      <button type="submit" style="float: right; background: rgba(140, 140, 140, 0.79);" class="btn btn-success" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

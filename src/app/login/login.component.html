@@ -1,0 +1,27 @@
+
+<div style="height: 100vh; background: rgba(230, 230, 230, 0.22);">
+  <div class="row" style="width: 600px;">
+      <div class="col s12 m6">
+        <div class="card white" style="margin-top: 20vh;">
+          <div class="card-content black-text">
+            <span class="card-title" style="font-weight: 400; color: grey;">Login</span>
+            <label for="username" style="margin-top: 20px;">Username</label>
+            <input [(ngModel)]="username" id="username" type="text" style="color: #524f4f; padding-left: 10px;">
+            <label for="password">Password</label>
+            <input [(ngModel)]="password" id="password" type="password" style="color: #524f4f; padding-left: 10px;">
+            <p><a href="register">Register</a></p>
+          </div>
+          <div class="card-action">
+            <button type="button" class="btn btn-primary" style="padding-left: 10px; padding-right: 10px; float: right;" (click)="login()">
+                Login
+            </button>
+            <div *ngIf="!isValid" class="alert alert-danger" style = "margin-left: 180px; text-align: center; width: 200px;">
+              Invalid Credentials  
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,42 @@
+
+<div class="inner-view" style="background-color: grey;"> 
+    <div *ngIf="loading">
+        <div class="ui segment" style="height: 90.7vh; background: #23232340; border: none;">
+            <div class="ui active dimmer">
+                <div class="ui large text loader">Loading</div>
+            </div>
+        </div>
+    </div>
+
+  <div infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+       (scrolled)="onScroll()" 
+       [scrollWindow]="false"
+      style="overflow-y: scroll; height: 87vh; margin-right: 3px; margin-left: 5px;">
+    <div *ngFor="let a of Articles">
+      <mat-card class="card">
+        <a target="_blank" href= "{{ a.urlToImage }}"><img mat-card-image id = "image" title="View Image" src = "{{ a.urlToImage }}"></a>
+        <mat-card-content>
+          <mat-card-title id = "title" >
+            <b>{{ a.title }}</b>
+          </mat-card-title>
+          <div id = "description">
+            <p>{{ a.description }}</p>
+          </div>
+        </mat-card-content>
+        <div id = "footer">
+            <div class = "row">
+
+            <button id="btn" target="_blank" type="submit" class="btn btn-primary" value="Read Full Article" style="width: 40.5px;">
+                <a id="hyper" target="_blank" href="{{a.url}}"><i class="fa fa-external-link" style="padding-top: 1.8px;" aria-hidden="true"></i></a>
+            </button>
+            <div id = "date">
+              <p>{{ a.publishedAt | amDateFormat:'MMMM Do YYYY' }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

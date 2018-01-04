@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+mat-ink-bar {
+    background-color: rgb(105, 218, 25) !important;
+}
+
+.mat-tab-header {
+    background-color: #eaeaea;
+    height: 46.5px;
+}
+
+mat-dialog-container{
+    width: 475px !important;
+    margin-left: -118px;
+}
+
+.ui.input {
+    font-size: 1em;
+    width: 100%;
+}
+
+.modal {
+    margin-left: -34vw !important; 
+    width: 70vw !important;
+    max-height: 85%;
+    // margin-top: 132px !important;
+}
+
+// .ui.modal {
+//     display: none;
+//     position: fixed;
+//     z-index: 1001;
+//     top: 50%;
+//     left: 50%;
+//     text-align: left;
+//     background: #fff;
+//     border: none;
+//     box-shadow: 1px 3px 3px 0 rgba(0,0,0,.2), 1px 3px 15px 2px rgba(0,0,0,.2);
+//     -webkit-transform-origin: 50% 25%;
+//     transform-origin: 50% 25%;
+//     border-radius: .28571429rem;
+//     -webkit-user-select: text;
+//     -moz-user-select: text;
+//     -ms-user-select: text;
+//     user-select: text;
+//     will-change: top,left,margin,transform,opacity;
+//     height: 537px;
+// }
+
+
+// .ui.modal>.header:not(.ui) {
+//     font-size: 1.428571rem;
+//     line-height: 1.285714em;
+//     font-weight: 1000;
+//     text-align: center;
+// }
+
+// .ui.modal>.content {
+//     display: block;
+//     width: 100%;
+//     font-size: 1em;
+//     line-height: 1.4;
+//     padding: 1.5rem;
+//     background: #fff;
+//     margin-bottom: -33px;
+// }
+canvas{
+    margin-left: 6px !important;
+    width: 476px !important;
+    height: 468px !important;
+}
+
+.side-menu-chart{
+    width: 40vw !important;
+    height: 70vh !important;
+}
+
+[data-tooltip]:after, [data-tooltip]:before {
+    pointer-events: none;
+    visibility: hidden;
+    display: none;
+}
+
+// .ui.modal{
+//     margin-top: 132px !important;    
+// }
+
+// .ui.active.modal {
+//     margin-top: 132px !important;
+// }
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+
+// @import '~@angular/material/theming';
+// // Plus imports for other components in your app.
+
+// // Include the common styles for Angular Material. We include this here so that you only
+// // have to load a single css file for Angular Material in your app.
+// // Be sure that you only ever include this mixin once!
+// @include mat-core();
+
+// // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// // hue.
+// $candy-app-primary: mat-palette($mat-indigo);
+// $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $candy-app-warn:    mat-palette($mat-red);
+
+// // Create the theme object (a Sass map containing all of the palettes).
+// $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+// @include angular-material-theme($candy-app-theme);

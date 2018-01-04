@@ -1,0 +1,66 @@
+<div class="inner-view">
+    <div id="search-container">
+        <label for="search-input">Enter Stock Symbol:<span style="color: red">*</span></label>
+        <input 
+          [(ngModel)]="apiSymbol"
+          class="form-control"
+          type="text" 
+          placeholder="e.g. AAPL" 
+          id="search-input">
+        <br><br>
+      
+        <label for="function-selection">Time Interval<span style="color: red">*</span></label>
+        <select
+          #function
+          [(ngModel)]="apiFunction" 
+          id="function-selection" 
+          class="form-control">
+          <option value="">Please make a selection</option>
+          <option *ngFor="let function of functions" [value]="function.apiCall">{{ function.name }}</option>
+        </select>
+        <br>
+        <div *ngIf="apiFunction=='function=TIME_SERIES_INTRADAY'">
+          <label for="interval-selection">Intraday Intervals<span style="color: red">*</span></label>
+          <select
+            [(ngModel)]="apiInterval" 
+            id="interval-selection" 
+            class="form-control">
+            <option value="">Please make a selection</option>
+            <option *ngFor="let interval of intervals" [value]="interval.apiCall">{{ interval.name }}</option>
+          </select>
+        </div> <br>
+      
+        <button
+          (click)="search()"
+          class="btn btn-primary" 
+          id="search-btn"
+          [disabled]="apiSymbol.length == 0 || apiFunction.length == 0 || (apiFunction=='function=TIME_SERIES_INTRADAY' && apiInterval == '0')">Search</button>
+      
+        <hr>
+        <div id="apiResult">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Symbol:</strong> {{ apiSymbol }} <br>
+            </li>
+            <li class="list-group-item">
+              <strong>Interval:</strong> {{ apiFunction }} <br>
+            </li>
+            <li *ngIf ="stock" class="list-group-item">
+              <strong>Open:</strong> {{ stock.open }} <br>
+            </li>
+            <li *ngIf ="stock" class="list-group-item">
+              <strong>High:</strong> {{ stock.high }} <br>
+            </li>
+            <li *ngIf ="stock" class="list-group-item">
+              <strong>Low:</strong> {{ stock.low }} <br>
+            </li>
+            <li *ngIf ="stock" class="list-group-item">
+              <strong>Close:</strong> {{ stock.close }} <br>
+            </li>
+            <li *ngIf ="stock" class="list-group-item">
+              <strong>Volume:</strong> {{ stock.volume }} <br>
+            </li>
+          </ul>
+        </div>
+      </div>
+</div>

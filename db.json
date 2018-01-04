@@ -1,0 +1,238 @@
+{
+  "user": [
+    {
+      "userID": 1000000000,
+      "firstname": "Nahom",
+      "lastname": "Tsadu",
+      "email": "nahomtsadu@gmail.com",
+      "username": "ntsadu",
+      "password": "ntsadu"
+    },
+    {
+      "userID": 1000000001,
+      "firstname": "Wezley",
+      "lastname": "Singleton",
+      "email": "wsingleton@gmail.com",
+      "username": "wsingl",
+      "password": "wsingl"
+    },
+    {
+      "userID": 1000000002,
+      "firstname": "Matt",
+      "lastname": "Lou",
+      "email": "mlou@gmail.com",
+      "username": "mlou",
+      "password": "mlou"
+    },
+    {
+      "userID": 1000000003,
+      "firstname": "Yosuf",
+      "lastname": "ElSaadany",
+      "email": "yels@gmail.com",
+      "username": "yels",
+      "password": "yels"
+    }
+  ],
+  "usersubscriptions": [
+    {
+      "userID": 1000000000,
+      "subscribingUserID": 1000000001
+    },
+    {
+      "userID": 1000000000,
+      "subscribingUserID": 1000000003
+    },
+    {
+      "userID": 1000000002,
+      "subscribingUserID": 1000000003
+    },
+    {
+      "userID": 1000000001,
+      "subscribingUserID": 1000000002
+    },
+    {
+      "userID": 1000000003,
+      "subscribingUserID": 1000000000
+    },
+    {
+      "userID": 1000000003,
+      "subscribingUserID": 1000000002
+    },
+    {
+      "userID": 1000000001,
+      "subscribingUserID": 1000000000
+    }
+  ],
+  "userfavorites": [
+    {
+      "userID": 1000000000,
+      "company": 1000000000
+    },
+    {
+      "userID": 1000000000,
+      "company": 1000000288
+    },
+    {
+      "userID": 1000000000,
+      "company": 1000003656
+    },
+    {
+      "userID": 1000000001,
+      "company": 1000000000
+    },
+    {
+      "userID": 1000000001,
+      "company": 1000006299
+    },
+    {
+      "userID": 1000000001,
+      "company": 1000006530
+    },
+    {
+      "userID": 1000000002,
+      "company": 1000003700
+    },
+    {
+      "userID": 1000000002,
+      "company": 1000003777
+    },
+    {
+      "userID": 1000000002,
+      "company": 1000000312
+    },
+    {
+      "userID": 1000000003,
+      "company": 1000000688
+    },
+    {
+      "userID": 1000000003,
+      "company": 1000003800
+    },
+    {
+      "userID": 1000000003,
+      "company": 1000004005
+    }
+  ],
+  "company": [
+    {
+      "companyID": 1000000000,
+      "exchange": "NYSE",
+      "symbol": "AFL",
+      "name": "Aflac Incorporated",
+      "sector": "Finance",
+      "industry": "Accent &Health Insurance"
+    },
+    {
+      "companyID": 1000000288,
+      "exchange": "NYSE",
+      "symbol": "XRX",
+      "name": "Xerox Corporation",
+      "sector": "Technology",
+      "industry": "Computer peripheral equipment"
+    },
+    {
+      "companyID": 1000000311,
+      "exchange": "NYSE",
+      "symbol": "ORCL",
+      "name": "Oracle Corporation",
+      "sector": "Technology",
+      "industry": "Computer Software: Prepackaged Software"
+    },
+    {
+      "companyID": 1000000312,
+      "exchange": "NYSE",
+      "symbol": "PAYC",
+      "name": "Paycom Software, Inc.",
+      "sector": "Technology",
+      "industry": "Computer Software: Prepackaged Software"
+    },
+    {
+      "companyID": 1000000688,
+      "exchange": "NYSE",
+      "symbol": "H",
+      "name": "Hyatt Hotels Corporation",
+      "sector": "Consumer Services",
+      "industry": "Hotels/Resorts"
+    },
+    {
+      "companyID": 1000003656,
+      "exchange": "NASDAQ",
+      "symbol": "BC",
+      "name": "Brunswick Corporation",
+      "sector": "Energy",
+      "industry": "Industrial Machinery/Components"
+    },
+    {
+      "companyID": 1000003700,
+      "exchange": "NASDAQ",
+      "symbol": "COF",
+      "name": "Capital One Financial Corporation",
+      "sector": "Finance",
+      "industry": "Major Banks"
+    },
+    {
+      "companyID": 1000003777,
+      "exchange": "NASDAQ",
+      "symbol": "CVX",
+      "name": "Chevron Corporation",
+      "sector": "Energy",
+      "industry": "Integrated oil Companies"
+    },
+    {
+      "companyID": 1000003800,
+      "exchange": "NASDAQ",
+      "symbol": "CMG",
+      "name": "Chipotle Mexican Grill, Inc.",
+      "sector": "Consumer Services",
+      "industry": "Restaurants"
+    },
+    {
+      "companyID": 1000004005,
+      "exchange": "NASDAQ",
+      "symbol": "DVMT",
+      "name": "Dell Technologies Inc.",
+      "sector": "Technology",
+      "industry": "Computer Manufacturing"
+    },
+    {
+      "companyID": 1000004456,
+      "exchange": "NASDAQ",
+      "symbol": "GS",
+      "name": "Goldman Sachs Group, Inc. (The)",
+      "sector": "Finance",
+      "industry": "Investment Bankers/Brokers/Service"
+    },
+    {
+      "companyID": 1000006299,
+      "exchange": "AMEX",
+      "symbol": "AXU",
+      "name": "Alexco Resource Corp",
+      "sector": "Basic Industries",
+      "industry": "Precious Metals"
+    },
+    {
+      "companyID": 1000006300,
+      "exchange": "AMEX",
+      "symbol": "ALO",
+      "name": "Alio Gold Inc.",
+      "sector": "Basic Industries",
+      "industry": "Precious Metals"
+    },
+    {
+      "companyID": 1000006530,
+      "exchange": "AMEX",
+      "symbol": "NSU",
+      "name": "Nevsun Resources Ltd",
+      "sector": "Basic Industries",
+      "industry": "Precious Metals"
+    },
+    {
+      "companyID": 1000006382,
+      "exchange": "AMEX",
+      "symbol": "CRVP",
+      "name": "Crystal Rock Holdings, Inc.",
+      "sector": "Consumer Non-Durables",
+      "industry": "Food Distributors"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<h1 mat-dialog-title><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{data.title}}</h1>
+<div mat-dialog-content style="height: 215px;">
+    <div class="row">
+            <form class="col s12">
+                <div class="row">
+                <div class="input-field col s6">
+                    <input disabled value="Amount: ${{data.request.reimbursementRequestAmount}}" id="amount" type="text" style="color: #524f4f; margin-bottom: 0px;">
+                </div>
+                <div class="input-field col s6">
+                    <input disabled value="Submit Date: {{data.request.reimbursementSubmitted | amLocale:'en' | amDateFormat:'MM-DD-YYYY'}}" id="submit_date" type="text" style="color: #524f4f; margin-bottom: 0px;">
+                </div>
+                </div>
+            </form>
+    </div>
+    <div class="row" style="height: 80px;">
+        <form class="input-field col s12" style="padding-left: 23px; padding-right: 21px;">
+            <input disabled value="Description: {{data.request.reimbursementDescription}}" id="description" type="text" style="color: #524f4f;">
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions style="float: right;">
+  <button type="button" class="btn btn-primary" tabindex="-1" style="padding-left: 10px; padding-right: 10px; background: rgba(140, 140, 140, 0.79); margin-right: 10px;" (click)="cancel()">
+    CANCEL
+  </button>
+  <button type="button" class="btn btn-primary" tabindex="-1" style="padding-left: 10px; padding-right: 10px;" (click)="onClick()">
+    SUBMIT
+  </button>
+</div>

@@ -1,0 +1,99 @@
+
+<div style="height: calc(100vh - 70px); 
+            background-color: white;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #dad8d8;
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);">
+    <div class="row" style="margin-left: 0px; margin-right: 0px;">
+        <div class="col s12" style="padding: 0px;">
+          <h1 style="margin-top: 18px;
+                    padding-top: 0px;
+                    padding-left: 23px;
+                    padding-bottom: 20px;
+                    font-size: x-large;
+                    color: #5d5858;
+                    border-bottom-style: solid;
+                    border-bottom-width: 1px;
+                    border-bottom-color: #dad8d8;
+                    font-family: 'Arimo', sans-serif;">
+              New Request
+
+              <a class="tooltipped" data-position="right" data-delay="20" materialize="tooltip" data-tooltip="Here you can submit a new reimbursement request. Please leave a detailed description." 
+              style="margin-top: -6px;
+                    margin-left: 5px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    background-color: rgba(255, 255, 255, 0);">
+              <i class="fa fa-info-circle" 
+                  style="margin-top: 1px;
+                      color: #777575;
+                      font-size: 1.82rem;">
+              </i>
+          </a>
+          </h1>
+        </div>
+      </div>
+
+    <div class="container" style="width: 96%; margin-top: 10px;">
+        <form>
+          <div class="row">
+            <div class="col s6">
+              <div class="form-group">
+                <label for="name">First Name</label>
+                <input disabled style="border-bottom-style: solid; width: 160px;" value="{{this.ersApp.currentUser.firstName}}" type="text" class="form-control" id="name" required>
+              </div>
+            </div>
+            <div class="col s6">
+              <div class="form-group">
+                <label for="name">Last Name</label>
+                <input disabled style="border-bottom-style: solid; width: 160px;" value="{{this.ersApp.currentUser.lastName}}" type="text" class="form-control" id="name" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col s6">
+                <div class="form-group" style="padding-right: 23vw;">
+                  <label for="type">Reimbursement Type</label>
+                  <mat-form-field id="type" class="form-control" style="border: none; padding-left: 0px; width: 171px;">
+                      <mat-select [(value)] = "selected" style="z-index: 9999 !important; position: relative;">
+                        <div *ngFor="let o of requestOptions">
+                            <mat-option value="{{o.value}}">{{o.value}}</mat-option>
+                        </div>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col s6">
+                <div class="form-group">
+                  <label for="amount" style="left: 0px;">Amount</label>
+                  <input #amount class="form-control" (keyup.enter)="updateAmount(amount.value)" (blur)="updateAmount(amount.value)" placeholder="$0.00" name="amount" id="amount" type="text" style="color: #524f4f; width: 160px; margin-bottom: 0px; padding-top: 1px">
+                </div>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input #description class="form-control" (keyup.enter)="updateDescription(description.value)" (blur)="updateDescription(description.value)" placeholder="Enter description" id="description" type="text" style="color: #524f4f; height: 70px; padding-left: 2px; width: 100%;">
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="row" style="
+                margin-left: 0vw;
+                margin-right: 0vw;
+                height: 34.3vh;
+                padding-top: 10px;
+                border-top-style: solid;
+                border-top-width: 1px;
+                border-top-color: #d2d2d2;
+                background-color: #f1f1f1;">
+        <div class="col s12">
+        <button type="submit" style="float: right;" class="btn btn-success" (click)="submitRequest()">Submit</button>
+      </div>
+    </div>
+</div>

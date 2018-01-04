@@ -1,0 +1,85 @@
+
+
+.card {
+    /* Add shadows to create the "card" effect */
+    // background-color: #EBF5FB;
+    background-color: #D0D3D4;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.5s;
+    // padding-top: 20px;
+    width: 400px;
+    height: 515px;
+    margin-top: 2%;
+    margin-left: 2%;
+    // margin-right: 2%;
+    float: left;
+    border: 1px solid rgba(0, 0, 0, 0.72);
+    margin-bottom: 0px;
+}
+
+.card.card:hover {
+    // background-color: rgb(45, 204, 13);
+    background-color: #07b032;
+    color: #f8f8f8 ;
+}
+ 
+#image {
+    height: 60%;
+}
+
+#title {
+    height: 30%;
+    margin-bottom: 7px;
+    line-height: 27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+#description {
+    height: 60px;
+    // background-color: red;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+}
+
+#date {
+    margin-left: 160px;
+    margin-top: 10px;
+    color: #616161;
+}
+
+#hyper {
+    color: white;
+    text-decoration: none;
+}
+
+#btn { 
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-bottom: 17px;
+    margin-left: 10px;
+    background-color: #07b032;
+}
+
+.card.card:hover #hyper {
+    color: black;
+}
+
+.card.card:hover #btn {
+    background-color: #D0D3D4;
+}
+
+.card.card:hover #date {
+    color: white;
+}

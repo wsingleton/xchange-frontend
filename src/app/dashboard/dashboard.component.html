@@ -1,0 +1,209 @@
+<ng-sidebar-container style="height: 100vh !important;">
+  <ng-sidebar class="sidebar-style" [(opened)]="_opened" [mode]="_MODES[_modeNum]" [keyClose]="_keyClose" [position]="_POSITIONS[_positionNum]"
+    [dock]="_dock" [dockedSize]="'50px'" [autoCollapseHeight]="_autoCollapseHeight" [autoCollapseWidth]="_autoCollapseWidth"
+    [closeOnClickOutside]="_closeOnClickOutside" [closeOnClickBackdrop]="_closeOnClickBackdrop" [showBackdrop]="_showBackdrop"
+    [animate]="_animate" [trapFocus]="_trapFocus" [autoFocus]="_autoFocus" [sidebarClass]="'demo-sidebar'" [ariaLabel]="'My sidebar'"
+    (onOpenStart)="_onOpenStart()" (onOpened)="_onOpened()" (onCloseStart)="_onCloseStart()" (onClosed)="_onClosed()">
+
+    <div class="container sidebar-header">
+      <div class="row">
+        <div class="col-8 sidebar-title">
+          Menu
+        </div>
+        <div class="col-4" style="padding-right: 4px; padding-top: 4px;">
+          <button class="demo-control close" (click)="_toggleOpened()">
+            <i class="fa fa-times" style="color: black;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="container sidebar-options">
+      <div class="row" style="height: 28px;">
+        <p class="sidebar-option">
+          <i class="fa fa-cog"></i>
+          <span class="format">Settings</span>
+        </p>
+      </div>
+      <div class="row" style="height: 28px;">
+        <p class="sidebar-option">
+          <i class="fa fa-info-circle"></i>
+          <span class="format">Help</span>
+        </p>
+      </div>
+      <div class="row" style="height: 28px;">
+        <p class="sidebar-option">
+          <i class="fa fa-sign-out"></i>
+          <span class="format" (click)="logout()">Logout</span>
+        </p>
+      </div>
+    </div>
+  </ng-sidebar>
+
+  <div ng-sidebar-content style="height: 100vh;">
+    <header class="demo-header" style="box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 5px 0 rgba(0, 0, 0, 0.12), 0 0px 8px 0px rgba(0, 0, 0, 0.2);">
+      <button (click)="_toggleOpened()" class="demo-header__toggle"></button>
+      <img src='../../assets/logos/xchange-logo.svg' height="30" width="30" style="width: 72px; margin-left: 0%;">
+    </header>
+
+    <div class="dashboard-container">
+      <div class="container" style="height: 100%; width: 100%; max-width: 100%; padding-left: 0px; margin-left: 0px; padding-right: 0px;">
+        <div class="row dashboard-content" style="height: 100%; width: 100%;">
+          <div class="col-md-2 col-sm-4" style="padding-left: 0px; padding-right: 0px;     box-shadow: 0 6px 5px 0px rgba(0, 0, 0, 0.14), 0 3px 5px 2px rgba(0, 0, 0, 0.12), 0 5px 8px 1px rgba(0, 0, 0, 0.2);">
+            <div class="dashboard-menu-panel">
+              <div class="dashboard-header">
+
+                <div class="row" (click)="openProfileModal()">
+                  <div class="col-md-4 col-sm-6" style="padding-right: 1px;">
+                    <div style="height: 45px; width: 45px; border-radius: 5px; background: rgb(224, 224, 224);">
+                      <i class="fa fa-user" aria-hidden="true" style="color: #7d7d7d;
+                                      height: 43px;
+                                      padding-left: 10.5px;
+                                      margin-bottom: 0px;
+                                      padding-bottom: 0px;"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-sm-6" style="font-size: small; padding-left: 0px; margin-left: -8px; margin-top: -4px;">
+                    {{ user.username }}
+                    <br>
+                    <span style="font-size: x-small;">View Profile</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="list-group  dashboard-options">
+                <a *ngIf="newsPage" id="news" class="list-group-item list-group-item-clicked list-group-item-action" (click)="switchPage($event)"
+                  style="font-family: 'Arimo', sans-serif;">News Feed
+                  <i class="fa fa-chevron-right" style="padding-top: 3px; float: right;" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="!newsPage" id="news" class="list-group-item list-group-item-action" (click)="switchPage($event)" style="font-family: 'Arimo', sans-serif;">News Feed</a>
+
+                <a *ngIf="listingsPage" id="listings" class="list-group-item list-group-item-clicked list-group-item-action" (click)="switchPage($event)">Equity Listings
+                  <i class="fa fa-chevron-right" style="padding-top: 3px; float: right;" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="!listingsPage" id="listings" class="list-group-item list-group-item-action" (click)="switchPage($event)">Equity Listings</a>
+
+                <a *ngIf="watchlistPage" id="watchlist" class="list-group-item list-group-item-clicked list-group-item-action" (click)="switchPage($event)">My Watch List
+                  <i class="fa fa-chevron-right" style="padding-top: 3px; float: right;" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="!watchlistPage" id="watchlist" class="list-group-item list-group-item-action" (click)="switchPage($event)">My Watch List</a>
+
+                <a *ngIf="subscriptionsPage" id="subscriptions" class="list-group-item list-group-item-clicked list-group-item-action" (click)="switchPage($event)">Subscriptions
+                  <i class="fa fa-chevron-right" style="padding-top: 3px; float: right;" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="!subscriptionsPage" id="subscriptions" class="list-group-item list-group-item-action" (click)="switchPage($event)">Subscriptions</a>
+
+                <a *ngIf="searchPage" id="search" class="list-group-item list-group-item-clicked list-group-item-action" (click)="switchPage($event)">Search
+                  <i class="fa fa-chevron-right" style="padding-top: 3px; float: right;" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="!searchPage" id="search" class="list-group-item list-group-item-action" (click)="switchPage($event)">Search</a>
+                <div class="panel-filler"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 col-sm-8" style="background-color: rgba(78, 76, 76, 0.66); padding-left: 8px; padding-right: 8px; padding-top: 8px;     height: calc(100vh - 55px);">
+
+            <div *ngIf="newsPage">
+              <app-news></app-news>
+            </div>
+            <div *ngIf="listingsPage">
+              <app-listings></app-listings>
+            </div>
+            <div *ngIf="watchlistPage">
+              <app-watchlist></app-watchlist>
+            </div>
+            <div *ngIf="subscriptionsPage">
+              <app-subscriptions></app-subscriptions>
+            </div>
+            <div *ngIf="searchPage">
+              <app-search></app-search>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER PROFILE MODAL -->
+  <ng-template let-context let-modal="modal" #modalTemplate>
+    <div class="header" style="text-align:center;">Account Information</div>
+    <div class="content">
+      <div class="row">
+        <div class="col-4">
+          <img mat-card-image alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+            id="profile-image" class="img-circle img-responsive">
+        </div>
+        <div *ngIf="!isValid; else change" class="col-8">
+          <label>
+            <b>First Name</b>
+          </label>
+          <br>{{ user.firstName }}
+          <hr>
+          <label>
+            <b>Last Name</b>
+          </label>
+          <br> {{ user.lastName }}
+          <hr>
+          <label>
+            <b>Username</b>
+          </label>
+          <br> {{ user.username }}
+          <hr>
+          <label>
+            <b>Email</b>
+          </label>
+          <br> {{ user.email }}
+          <hr>
+        </div>
+        <ng-template #change>
+          <div class="col-8">
+            <!-- First Name -->
+            <input required name="firstname" #firstname="ngModel" [(ngModel)]="user.firstName" style="color: #524f4f; padding-left: 10px;"
+              placeholder="{{user.firstName}}" type="text" class="form-control" required>
+
+            <!-- Last Name -->
+            <input required name="lastname" #lastname="ngModel" [(ngModel)]="user.lastName" style="color: #524f4f; padding-left: 10px;"
+              placeholder="{{user.lastName}}" type="text" class="form-control">
+
+            <!-- Username -->
+            <input required name="username" #username="ngModel" [(ngModel)]="user.username" (keyup)="validateUsername()" style="color: #524f4f; padding-left: 10px;"
+              placeholder="{{user.username}}" type="text" class="form-control">
+            <div *ngIf="usernameFlag" class="alert alert-danger" style="text-align: center;">
+              Username is already taken
+            </div>
+
+            <!-- Email -->
+            <input required email #email="ngModel" name="email" (keyup)="validateEmail()" [(ngModel)]="user.email" style="color: #524f4f; padding-left: 10px;"
+              placeholder="{{user.email}}" type="email" class="form-control">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.errors.email" class="alert alert-danger" style="text-align: center;">
+                Not a valid email address
+              </div>
+            </div>
+            <div *ngIf="emailFlag" class="alert alert-danger" style="text-align: center;">
+              Email address is already taken
+            </div>
+
+            <!-- Password -->
+            <input required #password="ngModel" name="password" [(ngModel)]="user.password" style="color: #524f4f; padding-left: 10px;"
+              placeholder="{{user.password}}" type="password" class="form-control">
+
+            <!-- Disabling submit button if fields are empty -->
+            <div *ngIf="(user.email.length && user.username.length && user.firstName.length &&
+              user.lastName.length && user.password.length && !emailFlag && !usernameFlag) else disable">
+              <button class="ui green button" (click)="update()" autofocus>Submit</button>
+            </div>
+            <ng-template #disable>
+              <button [disabled]="true" class="ui green button" (click)="update()" autofocus>Submit</button>
+            </ng-template>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- Disabling action buttons if fields are empty -->
+    <div class="actions">
+      <button id="button" class="ui green button" (click)="changeView()" id="toggle">Edit</button>
+      <button id="button" class="ui red button" (click)="modal.deny('denied')">Close</button>
+    </div>
+  </ng-template>
