@@ -1,2 +1,2 @@
 # xchange-frontend
-Angular frontend for XChange application
+Angular4 front-end for XChange application.
