@@ -7,8 +7,10 @@ phases:
     install:
         commands:
             - echo Installing source NPM dependencies...
-            - npm install
+            - mv package.json package.bak
+            - npm install @types/lodash --no-save
             - npm install -g @angular/cli
+            - mv package.bak package.json
     build:
         commands:
             - echo Build started on `date`
