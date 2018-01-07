@@ -1,2 +1,2 @@
 # Dependency directories
-/node_modules/@types/lodash
+!node_modules/@types/lodash
